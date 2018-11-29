@@ -56,67 +56,6 @@ angular
         User.logout();
         currentUser = {};
       },
-      removeUserInfo: function() {
-        currentUser = {};
-        if (["iq.signin"].indexOf($state.current.name) == -1) {
-          $state.go("iq.main");
-        }
-      },
-
-      /**
-       * Create a new user
-       *
-       * @param  {Object}   user     - user info
-       * @param  {Function} callback - optional
-       * @return {Promise}
-       */
-      createUser: function(user, callback) {
-        var cb = callback || angular.noop;
-
-        return User.save(
-          user,
-          function(data) {
-            // $cookieStore.put('token', data.token, { secure: true });
-            currentUser = User.get();
-            return cb(user);
-          },
-          function(err) {
-            this.logout();
-            return cb(err);
-          }.bind(this)
-        ).$promise;
-      },
-
-      /**
-       * Change password
-       *
-       * @param  {String}   oldPassword
-       * @param  {String}   newPassword
-       * @param  {Function} callback    - optional
-       * @return {Promise}
-       */
-      changePassword: function(oldPassword, newPassword, callback) {
-        var cb = callback || angular.noop;
-        return User.changePassword(
-          { id: currentUser._id },
-          {
-            oldPassword: oldPassword,
-            newPassword: newPassword
-          },
-          function(user) {
-            return cb(user);
-          },
-          function(err) {
-            return cb(err);
-          }
-        ).$promise;
-      },
-      resetPassword: function(userId, password) {
-        var data = {};
-        data.userId = userId;
-        data.password = password;
-        return $http.post("/api/users/resetpassword", data);
-      },
 
       /**
        * Gets all available info on authenticated user
@@ -124,37 +63,8 @@ angular
        * @return {Object} user
        */
       getCurrentUser: function() {
-        if (currentUser) return currentUser;
-        else return "";
-      },
-
-      //checking user is present or not
-
-      validateUser: function(data, callback) {
-        return $http.post("/api/users/validateuser", data);
-      },
-      validateSignup: function(data, callback) {
-        return $http
-          .post("/api/users/validatesignup", data)
-          .then(function(res) {
-            return res.data;
-          })
-          .catch(function(err) {
-            throw err;
-          });
-      },
-      validateSocialSignup: function(data, callback) {
-        return $http
-          .post("/api/users/validateSocialSignup", data)
-          .then(function(res) {
-            return res.data;
-          })
-          .catch(function(err) {
-            throw err;
-          });
-      },
-      validateOtp: function(data) {
-        return $http.post("/api/users/validateotp", data);
+        console.log(currentUser);
+        return currentUser;
       },
 
       /**
@@ -164,24 +74,6 @@ angular
        */
       isLoggedIn: function() {
         return currentUser.hasOwnProperty("role");
-      },
-
-      /**
-       * Check if a user is logged in
-       *
-       * @return {Boolean}
-       */
-      isUploadProduct: function() {
-        if (currentUser && currentUser.role == "admin") return true;
-        else return false;
-      },
-
-      isActive: function() {
-        return auth.isAdmin();
-        /* if(currentUser && currentUser.role == 'admin' )
-        return true;
-       else
-        return false;*/
       },
 
       /**
