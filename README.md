@@ -1,5 +1,7 @@
 # WNS-Assessment-Task
 
+Login page with single screen for data visualization.
+
 NodeJS and mongoDB needs to be installed first.
 
 Commands to be run after cloning the project:
