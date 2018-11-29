@@ -1,0 +1,4 @@
+node_modules
+.vscode
+.tmp
+client/bower_components

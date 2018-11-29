@@ -1,0 +1,30 @@
+<section id="login-page">
+    <div class="wrapper fadeInDown">
+      <div id="formContent">
+        <div class="fadeIn first">
+          <h1>WNS-Assessment-Task</h1>
+        </div>
+
+        <!-- Login Form -->
+        <form ng-submit="login();">
+          <input
+            type="text"
+            id="login"
+            class="fadeIn second"
+            name="login"
+            placeholder="username"
+            ng-model="user.email"
+          />
+          <input
+            type="password"
+            id="password"
+            class="fadeIn third"
+            name="login"
+            placeholder="password"
+            ng-model="user.password"
+          />
+          <button type="submit" class="fadeIn fourth">Log In</button>
+        </form>
+      </div>
+    </div>
+  </section>
