@@ -1,5 +1,7 @@
 # WNS-Assessment-Task
 
+Login page with single screen for data visualization.
+
 NodeJS and mongoDB needs to be installed first.
 
 Commands to be run after cloning the project:
@@ -14,3 +16,6 @@ API Endpoints:
     - localhost:3000/api/stream
 2. Scheduled job API to transform data and store it back in json:
     - localhost:3000/api/cron
+3. Aggregated Query:
+    - localhost:3000/api/avengers?gender=true
+      - returns accumulated result based on gender
