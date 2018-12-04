@@ -20,8 +20,11 @@ User.find(function (err, data) {
       name: 'Admin',
       email: 'admin@admin.com',
       password: '123'
-    }, function() {
-        console.log('finished populating users');
+    }, function(err, result) {
+      if(err) {
+        throw err;
+      }
+      console.log('finished populating users');
     });
   }
 });

@@ -18,6 +18,8 @@
             $scope.labelsOne.push(row._id)
             $scope.dataOne.push(row.count);
           });
+        } else {
+          alert('Unable to fetch data!');
         }
       });
     };

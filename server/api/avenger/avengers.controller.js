@@ -3,9 +3,7 @@
 var fs = require("fs");
 var path = require("path");
 var csvjson = require("csvjson");
-// var toObject = csvjson.stream.toObject();
-// var stringify = csvjson.stream.stringify();
-var INPUT_FILE_PATH = path.join(__dirname, "../../sample/avengers.csv");
+var INPUT_FILE_PATH = path.join(__dirname, "../../../sample/avengers.csv");
 var AvengerModel = require("./avengers.model");
 
 exports.create = function(req, res) {
@@ -18,7 +16,7 @@ exports.create = function(req, res) {
       delimiter: ",",
       quote: '"'
     });
-    var data = data.slice(1, data.length + 1);
+    data = data.slice(1, data.length + 1);
     AvengerModel.insertMany(data, function(err, docs) {
       if (err) {
         return res.send(err);

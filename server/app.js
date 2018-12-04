@@ -18,7 +18,7 @@ mongoose.connect(
 );
 
 mongoose.connection.on("connected", function() {
-  console.log("Mongoose default connection open to " + config.mongo.uri);
+  console.log("Mongoose connection open");
 });
 
 mongoose.connection.on("error", function(err) {

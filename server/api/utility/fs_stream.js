@@ -10,7 +10,7 @@
   var toObject = csvjson.stream.toObject();
   var stringify = csvjson.stream.stringify();
   var INPUT_FILE_PATH = path.join(__dirname, "../../../sample/alcohol.csv");
-  var OUTPUT_FILE_PATH = path.join(__dirname, "../../output/output.json");
+  var OUTPUT_FILE_PATH = path.join(__dirname, "../../../output/output.json");
 
   // Expose function
   module.exports = {
